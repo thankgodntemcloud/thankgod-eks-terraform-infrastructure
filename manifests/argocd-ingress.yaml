@@ -4,7 +4,7 @@ metadata:
   name: argocd-server
   namespace: argocd
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/cluster-issuer: letsencrypt-staging
     # F5 NGINX rejects a second Ingress for the same host, so cert-manager
     # adds the ACME challenge path to this Ingress instead of creating its own
     acme.cert-manager.io/http01-edit-in-place: "true"
@@ -12,10 +12,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - argocd.digitalwitch.online
+        - argocd.thankgodntemcloud.online
       secretName: argocd-server-tls
   rules:
-    - host: argocd.digitalwitch.online
+    - host: argocd.thankgodntemcloud.online
       http:
         paths:
           - path: /

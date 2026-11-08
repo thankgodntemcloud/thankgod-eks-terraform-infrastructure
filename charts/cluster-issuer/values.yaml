@@ -1,8 +1,8 @@
 # Name used in Ingress annotations: cert-manager.io/cluster-issuer: <name>
-name: letsencrypt-prod
+name: letsencrypt-staging
 
-# Let's Encrypt production ACME server
-server: https://acme-v02.api.letsencrypt.org/directory
+# Let's Encrypt staging ACME server
+server: https://acme-staging-v02.api.letsencrypt.org/directory
 
 # Optional contact email for the ACME account (leave empty for none)
 email: ""

@@ -2,20 +2,20 @@
 variable "aws_region" {
   description = "AWS region to deploy into"
   type        = string
-  default     = "us-west-1"
+  default     = "us-east-1"
 }
 
 variable "cluster_name" {
   description = "Name of the EKS cluster; also used as a prefix for related resources"
   type        = string
-  default     = "smartcloud-eks"
+  default     = "thankgodntem-eks"
 }
 
 # ---- Networking ----
 variable "vpc_name" {
   description = "Name tag of the VPC"
   type        = string
-  default     = "smartcloud-vpc"
+  default     = "thankgodntem-eks-vpc"
 }
 
 variable "vpc_cidr" {
@@ -66,9 +66,9 @@ variable "cluster_endpoint_public_access_cidrs" {
 }
 
 variable "cluster_admin_arns" {
-  description = "Extra IAM users/roles that get cluster-admin. The identity that runs terraform apply (the GitHub OIDC role) is admin automatically, so do NOT list it here."
+  description = "Additional IAM users or roles granted EKS cluster administrator permissions."
   type        = list(string)
-  default     = ["arn:aws:iam::060647991200:user/terraform"]
+  default     = ["arn:aws:iam::674113923182:user/terraform-lab-admin"]
 }
 
 # ---- Worker nodes ----
@@ -111,7 +111,7 @@ variable "node_max_size" {
 variable "key_pair_name" {
   description = "Name of the EC2 key pair (private key is written to <name>.pem)"
   type        = string
-  default     = "smartcloud-eks-key"
+  default     = "thankgodntem-eks-key"
 }
 
 # ---- Helm chart versions ----
@@ -149,26 +149,26 @@ variable "ingress_class_name" {
 variable "cluster_issuer_name" {
   description = "Name of the cert-manager ClusterIssuer (used in Ingress annotations)"
   type        = string
-  default     = "letsencrypt-prod"
+  default     = "letsencrypt-staging"
 }
 
 variable "letsencrypt_server" {
-  description = "ACME server URL (production; use the staging URL for testing)"
+  description = "ACME server URL for certificate issuance"
   type        = string
-  default     = "https://acme-v02.api.letsencrypt.org/directory"
+  default     = "https://acme-staging-v02.api.letsencrypt.org/directory"
 }
 
 variable "letsencrypt_email" {
-  description = "Optional contact email for the Let's Encrypt account"
+  description = "Contact email for the Let's Encrypt account"
   type        = string
-  default     = "chukwunonsosmartagbawo@gmail.com"
+  default     = "teegeentem@gmail.com"
 }
 
 # ---- Argo CD ----
 variable "argocd_hostname" {
   description = "Public hostname for the Argo CD UI (must match manifests/argocd-ingress.yaml)"
   type        = string
-  default     = "argocd.digitalwitch.online"
+  default     = "argocd.thankgodntemcloud.online"
 }
 
 # ---- EFS ----
@@ -182,11 +182,11 @@ variable "efs_transition_to_ia" {
 variable "kubeconfig_bucket" {
   description = "S3 bucket where the admin kubeconfig is uploaded"
   type        = string
-  default     = "terrformstate-060647991200"
+  default     = "thankgod-terraform-state-674113923182-us-east-1"
 }
 
 variable "kubeconfig_s3_key" {
   description = "S3 object key of the admin kubeconfig"
   type        = string
-  default     = "eks/kubeconfig"
+  default     = "personal-lab/eks/kubeconfig"
 }
