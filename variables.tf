@@ -68,7 +68,7 @@ variable "cluster_endpoint_public_access_cidrs" {
 variable "cluster_admin_arns" {
   description = "Additional IAM users or roles granted EKS cluster administrator permissions."
   type        = list(string)
-  default     = ["arn:aws:iam::674113923182:user/terraform-lab-admin"]
+  default     = ["arn:aws:iam::674113923182:role/gitaction-terraform-oidc"]
 }
 
 # ---- Worker nodes ----
